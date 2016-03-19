@@ -1,6 +1,32 @@
 ﻿
 @{
-    ViewBag.Title = "NatureGallery";
+    ViewBag.Title = "Nature Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
 }
-<h2>NatureGallery</h2>
+
+
+
+<div class="container">
+    <div class="row">
+        @{
+            foreach (var fullPath in ViewBag.Photos)
+            {
+                if (count%6 == 0)
+                {
+                    @:</div>
+                    <br/>
+                    @:<div class="row">
+                }
+
+                var fileName = Path.GetFileName(fullPath);
+
+                <div class="col-xs-2">
+                    <img src="~/Images/Nature/@fileName" alt="@fileName" class="img-responsive" style="height: 150px; width: auto;"/>
+                </div>
+            
+                count = count + 1;
+            }
+        }
+    </div>
+</div>

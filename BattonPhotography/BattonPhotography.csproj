@@ -125,6 +125,15 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Event\EventImage1.jpg" />
+    <Content Include="Images\Nature\NatureImage10.jpg" />
+    <Content Include="Images\Nature\NatureImage9.jpg" />
+    <Content Include="Images\Nature\NatureImage8.jpg" />
+    <Content Include="Images\Nature\NatureImage7.jpg" />
+    <Content Include="Images\Nature\NatureImage6.jpg" />
+    <Content Include="Images\Nature\NatureImage5.jpg" />
+    <Content Include="Images\Nature\NatureImage4.jpg" />
+    <Content Include="Images\Nature\NatureImage3.jpg" />
+    <Content Include="Images\Nature\NatureImage2.jpg" />
     <Content Include="Images\Nature\NatureImage1.jpg" />
     <Content Include="Images\Wedding\WeddingImage1.jpg" />
     <Content Include="Scripts\bootstrap.js" />

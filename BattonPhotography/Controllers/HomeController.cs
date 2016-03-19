@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,6 +37,9 @@ namespace BattonPhotography.Controllers
 
         public ActionResult NatureGallery()
         {
+            IEnumerable<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature"));
+            ViewBag.Photos = naturePhotos;
+
             return View();
         }
 
