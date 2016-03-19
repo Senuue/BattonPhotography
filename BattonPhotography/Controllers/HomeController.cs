@@ -47,5 +47,13 @@ namespace BattonPhotography.Controllers
         {
             return View();
         }
+
+        public ActionResult RequestPrint(string gallery, string file)
+        {
+            ViewBag.Gallery = gallery;
+            ViewBag.FileName = file;
+
+            return View();
+        }
     }
 }

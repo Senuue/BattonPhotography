@@ -5,7 +5,17 @@
     int count = 0;
 }
 
+<style>
+    .imgContainer {
+        width: 150px;
+        height: 150px;
+    }
 
+    .imgContainer img {
+        width: auto;
+        height: 100%;
+    }
+</style>
 
 <div class="container">
     <div class="row">
@@ -22,8 +32,13 @@
                 var fileName = Path.GetFileName(fullPath);
 
                 <div class="col-xs-2">
-                    <a href="~/Images/Nature/@fileName">
-                    <img src="~/Images/Nature/@fileName" alt="@fileName" class="img-responsive" style="height: 150px; width: auto;"/>
+                    <div class="imgContainer">
+                        <a href="~/Images/Nature/@fileName">
+                            <img src="~/Images/Nature/@fileName" alt="@fileName" class="img-responsive"/>
+                        </a>
+                    </div>
+                    <a href="@Url.Action("RequestPrint", "Home", new {gallery = "Nature", file = @fileName })">
+                    <div class="btn btn-sm btn-success">Request Print</div>
                         </a>
                 </div>
 
