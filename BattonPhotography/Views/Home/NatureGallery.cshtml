@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     int count = 0;
 }
-
 <style>
     .imgContainer {
         width: 150px;
@@ -33,13 +32,13 @@
 
                 <div class="col-xs-2">
                     <div class="imgContainer">
-                        <a href="~/Images/Nature/@fileName">
-                            <img src="~/Images/Nature/@fileName" alt="@fileName" class="img-responsive"/>
+                        <a href="~/Images/Nature/@fileName" id="@fileName" target="_blank">
+                            <img src="~/Images/Nature/@fileName" alt="@fileName" class="img-responsive" />
                         </a>
                     </div>
-                    <a href="@Url.Action("RequestPrint", "Home", new {gallery = "Nature", file = @fileName })">
-                    <div class="btn btn-sm btn-success">Request Print</div>
-                        </a>
+                    <a href="@Url.Action("RequestPrint", "Home", new {gallery = "Nature", file = @fileName})">
+                        <div class="btn btn-sm btn-success">Request Print</div>
+                    </a>
                 </div>
 
 
@@ -48,3 +47,5 @@
         }
     </div>
 </div>
+
+    
