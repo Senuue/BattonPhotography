@@ -22,11 +22,13 @@ namespace BattonPhotography
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/Gallery.js"));
+                      "~/Scripts/jquery.nailthumb.1.1.min.js",
+                      "~/Scripts/natureGallery.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/jquery.nailthumb.1.1.min.css"));
         }
     }
 }

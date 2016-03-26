@@ -37,8 +37,17 @@ namespace BattonPhotography.Controllers
 
         public ActionResult NatureGallery()
         {
-            IEnumerable<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature"));
-            ViewBag.Photos = naturePhotos;
+            IEnumerable<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature/FullSize"));
+
+            List<string> naturePhotosList = new List<string>();
+
+            foreach (var photo in naturePhotos)
+            {
+                naturePhotosList.Add(photo);
+            }
+
+            ViewBag.Photos = naturePhotosList;
+            ViewBag.PhotoCount = naturePhotosList.Count();
 
             return View();
         }

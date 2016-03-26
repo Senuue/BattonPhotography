@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,22 +39,33 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.4.0.5\lib\net45\ImageResizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.DiskCache, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.Plugins.DiskCache.4.0.5\lib\net45\ImageResizer.Plugins.DiskCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.PrettyGifs, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.Plugins.PrettyGifs.4.0.5\lib\net45\ImageResizer.Plugins.PrettyGifs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -93,6 +106,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -118,36 +132,53 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-image-gallery.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.nailthumb.1.1.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Event\EventImage1.jpg" />
-    <Content Include="Images\Nature\NatureImage10.jpg" />
-    <Content Include="Images\Nature\NatureImage9.jpg" />
-    <Content Include="Images\Nature\NatureImage8.jpg" />
-    <Content Include="Images\Nature\NatureImage7.jpg" />
-    <Content Include="Images\Nature\NatureImage6.jpg" />
-    <Content Include="Images\Nature\NatureImage5.jpg" />
-    <Content Include="Images\Nature\NatureImage4.jpg" />
-    <Content Include="Images\Nature\NatureImage3.jpg" />
-    <Content Include="Images\Nature\NatureImage2.jpg" />
-    <Content Include="Images\Nature\NatureImage1.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage10.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage9.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage8.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage7.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage6.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage5.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage4.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage3.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage2.jpg" />
+    <Content Include="Images\Nature\FullSize\NatureImage1.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage1.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage10.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage2.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage3.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage4.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage5.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage6.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage7.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage8.jpg" />
+    <Content Include="Images\Nature\Thumbnails\tn_NatureImage9.jpg" />
     <Content Include="Images\Wedding\WeddingImage1.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\arvixe ftp.pubxml" />
+    <None Include="Properties\PublishProfiles\Arvixe WBP.pubxml" />
+    <None Include="Properties\PublishProfiles\Arvixe.pubxml" />
+    <None Include="Properties\PublishProfiles\wbattonphotography.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Gallery.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.nailthumb.1.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\natureGallery.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
