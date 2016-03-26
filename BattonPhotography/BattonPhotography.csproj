@@ -151,16 +151,6 @@
     <Content Include="Images\Nature\FullSize\NatureImage3.jpg" />
     <Content Include="Images\Nature\FullSize\NatureImage2.jpg" />
     <Content Include="Images\Nature\FullSize\NatureImage1.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage1.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage10.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage2.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage3.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage4.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage5.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage6.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage7.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage8.jpg" />
-    <Content Include="Images\Nature\Thumbnails\tn_NatureImage9.jpg" />
     <Content Include="Images\Wedding\WeddingImage1.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -204,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Nature\Thumbnails\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
