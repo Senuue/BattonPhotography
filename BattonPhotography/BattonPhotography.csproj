@@ -164,8 +164,8 @@
     <Content Include="Images\Nature\windmill.jpg" />
     <Content Include="Images\Nature\Wolf.jpg" />
     <Content Include="Images\Nature\Yellowstonewaterfall.jpg" />
-    <Content Include="Images\Wedding\Alicia&amp;craig.jpg" />
-    <Content Include="Images\Wedding\Alicia&amp;craig2.jpg" />
+    <Content Include="Images\Wedding\AliciaAndCraig.jpg" />
+    <Content Include="Images\Wedding\AliciaAndCraig2.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\arvixe ftp.pubxml" />
