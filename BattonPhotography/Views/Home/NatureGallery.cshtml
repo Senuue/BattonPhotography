@@ -6,31 +6,22 @@
 }
 
 
-<style>
-    .modal-dialog {
-        align-content: center;
-        width: 90%;
-        height: 90%;
-        padding: 50% 50% 50% 50%;
-        padding: 0;
-        
-    }
-    .modal-content {
-        height: auto;
-        min-height: 100%;
-        border-radius: 0;
-    }
-
-    .imgCol {
-        max-height: 150px;
-        max-width: 150px;
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-top: 15px;
-    }
-
-</style>
 <div class="container">
+    <br/>
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <div class="well">
+                <p>Prints are available starting at $15.00 plus shipping, either on canvas or Designer Collection Frame. <br/>
+                    <strong>Available sizes:</strong> 5x7 8x10 10x20 11x14 12x12 12x36 16x20 <br/>
+                    Please contact me for quotes on prints. <br/>
+                    <a href="mailto:wbatton@wbattonphotography.com">wbatton@wbattonphotography.com</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+
     <div class="row">
         @{
             foreach (var fullPath in ViewBag.Photos)
@@ -39,14 +30,16 @@
                 var fileName = Path.GetFileName(fullPath);
                 var id = Path.GetFileNameWithoutExtension(fullPath);
                 var target = "#" + @id;
-                
-                <div class="col-xs-4 imgCol">
-                    <a href="#" data-toggle="modal" data-target="@target">
-                    <img src="~/Images/Nature/FullSize/@fileName?mode=carve&height=150&width=150"/>
+
+                <div class="col-xs-2 thumbCell">
+                    <div class="nailthumb-container squareImage">
+                        <a href="#" data-toggle="modal" data-target="@target">
+                            <img class="nailthumb-image" src="~/Images/Nature/@fileName"/>
                         </a>
+                    </div>
                 </div>
 
-                <div class="modal fade" id="@id" tabindex="-1" role="dialog">
+                    <div class="modal fade" id="@id" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -56,14 +49,11 @@
                                 </div>
                             </div>
                             <div class="modal-body">
-                                <img id="current" src="~/Images/Nature/FullSize/@fileName" class="img-responsive"/>
+                                <img id="current" src="~/Images/Nature/@fileName" class="img-responsive"/>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <a href="@Url.Action("RequestPrint", "Home", new {gallery = "Nature", file = @fileName})">
-                                    <div type="button" class="btn btn-primary">Request Print</div>
-                                </a>
-                                <a href="~/Images/Nature/FullSize/@fileName" target="_blank" title="Open full size">
+                                <a href="~/Images/Nature/@fileName" target="_blank" title="Open full size">
                                     <div type="button" class="btn btn-success"><span class="glyphicon glyphicon-new-window"></span></div>
                                 </a>
                             </div>

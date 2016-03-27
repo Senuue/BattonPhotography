@@ -9,8 +9,19 @@ namespace BattonPhotography.Controllers
 {
     public class HomeController : Controller
     {
+        private static Random rnd = new Random((int)DateTime.Now.Ticks);
+
         public ActionResult Index()
         {
+            List<string> weddingPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Wedding")).ToList();
+            ViewBag.Wedding = Path.GetFileName(weddingPhotos[rnd.Next(weddingPhotos.Count)]);
+
+            List<string> eventPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Event")).ToList();
+            ViewBag.Event = Path.GetFileName(eventPhotos[rnd.Next(eventPhotos.Count)]);
+
+            List<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature")).ToList();
+            ViewBag.Nature = Path.GetFileName(naturePhotos[rnd.Next(naturePhotos.Count)]);
+
             return View();
         }
 
@@ -30,14 +41,24 @@ namespace BattonPhotography.Controllers
 
         public ActionResult WeddingGallery()
         {
-            ViewBag.Message = "Wedding Gallery";
+            IEnumerable<string> weddingPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/wedding"));
+
+            List<string> weddingPhotosList = new List<string>();
+
+            foreach (var photo in weddingPhotos)
+            {
+                weddingPhotosList.Add(photo);
+            }
+
+            ViewBag.Photos = weddingPhotosList;
+            ViewBag.PhotoCount = weddingPhotosList.Count();
 
             return View();
         }
 
         public ActionResult NatureGallery()
         {
-            IEnumerable<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature/FullSize"));
+            IEnumerable<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature"));
 
             List<string> naturePhotosList = new List<string>();
 
@@ -54,6 +75,18 @@ namespace BattonPhotography.Controllers
 
         public ActionResult EventGallery()
         {
+            IEnumerable<string> eventPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/event"));
+
+            List<string> eventPhotosList = new List<string>();
+
+            foreach (var photo in eventPhotos)
+            {
+                eventPhotosList.Add(photo);
+            }
+
+            ViewBag.Photos = eventPhotosList;
+            ViewBag.PhotoCount = eventPhotosList.Count();
+
             return View();
         }
 

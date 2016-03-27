@@ -9,7 +9,66 @@
 
     <link href='https://fonts.googleapis.com/css?family=Alex+Brush' rel='stylesheet' type='text/css'>
 
+
+    <style>
+        .modal-dialog {
+            align-content: center;
+            width: 90%;
+            height: 90%;
+            padding: 50% 50% 50% 50%;
+            padding: 0;
+        }
+
+        .modal-content {
+            height: auto;
+            min-height: 100%;
+            -ms-border-radius: 0;
+            border-radius: 0;
+        }
+
+        .imgCol {
+            max-height: 150px;
+            max-width: 150px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 15px;
+        }
+
+        .imgContainer {
+            min-height: 150px;
+            max-height: 150px;
+            -moz-min-width: 150px;
+            -ms-min-width: 150px;
+            -o-min-width: 150px;
+            -webkit-min-width: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            text-align: center;
+        }
+
+            .imgContainer img {
+                height: 100%;
+                width: auto;
+                position: absolute;
+                padding-right: 10px;
+                padding-top: 10px;
+                overflow: hidden;
+            }
+
+        .squareImage {
+            height: 150px;
+            width: 150px;
+        }
+        .thumbCell {
+            height: 150px;
+            width: 150px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
+
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -41,6 +100,12 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
-
+<script>
+    $(document).ready(function() {
+        $(".nailthumb-container").nailthumb({
+            mode: "resize"
+        });
+    })
+</script>
 </body>
 </html>

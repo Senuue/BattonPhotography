@@ -1,46 +1,73 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    string weddingPhoto = ViewBag.Wedding;
+    string naturePhoto = ViewBag.Nature;
+    string eventPhoto = ViewBag.Event;
 }
+
+<style>
+    .galleryPic {
+        width: 300px;
+        height: 300px;
+    }
+
+    .galleryCell {
+        width: 300px;
+    }
+</style>
 <br/>
-<div class="jumbotron" style="background-color: #60baba">
-    <h1 style="font-family: Alex Brush;">Batton Photograpy</h1>
-    <p class="lead">Batton Photograpy is based in Winter Haven, FL. We are available for weddings, parties, and any other event. Contact us to purchase a print. </p>
-</div>
+<div class="container">
 
-<div class="row">
-    <div class="col-xs-4" id="weddingGallery">
-        <img src="~/Images/Wedding/WeddingImage1.jpg" alt="WeddingPhoto" class="img-responsive img-thumbnail"/>
-        <br/>
-        <br/>
-        <div class="text-center">
-            <a href="@Url.Action("WeddingGallery", "Home")">
-            <div class="btn btn-lg btn-info text-center">View Wedding Gallery</div>
-                </a>
-        </div>
+    <div class="jumbotron" style="background-color: #60baba">
+        <h1 style="font-family: Alex Brush;">Batton Photograpy</h1>
+        <p class="lead">Batton Photograpy is based in Winter Haven, FL. We are available for weddings, parties, and any other event. Contact us for quote. Nature prints are available for purchase.</p>
+        <p><a href="mailto:wbatton@wbattonphotography.com">wbatton@wbattonphotography.com</a></p>
     </div>
 
-    <div class="col-xs-4" id="eventGallery">
-        <img src="~/Images/Event/EventImage1.jpg" alt="EventPhoto" class="img-responsive img-thumbnail"/>
-        <br/>
-        <br/>
-        <div class="text-center">
-            <a href="@Url.Action("EventGallery", "Home")">
-            <div class="btn btn-lg btn-info text-center">View Event Gallery</div>
-                </a>
-        </div>
-    </div>
+    <div class="row">
 
-    <div class="col-xs-4" id="natureGallery">
-        <img src="~/Images/Nature/FullSize/NatureImage1.jpg" alt="NaturePhoto" class="img-responsive img-thumbnail"/>
-        <br/>
-        <br/>
-        <div class="text-center">
-            <a href="@Url.Action("NatureGallery", "Home")">
-                <div class="btn btn-lg btn-info text-center">
-                    View Nature Gallery
+        <a href="@Url.Action("WeddingGallery", "Home")">
+            <div class="col-xs-4" id="weddingGallery">
+                <div class="galleryCell">
+                    <div class="nailthumb-container galleryPic">
+                        <img src="~/Images/Wedding/@weddingPhoto" alt="@weddingPhoto" />
+                    </div>
+                    <div class="text-center">
+                        <div class="btn btn-info text-center">View Wedding Gallery</div>
+                    </div>
                 </div>
-            </a>
-        </div>
-    </div>
+            </div>
+        </a>
 
+        <a href="@Url.Action("EventGallery", "Home")">
+
+            <div class="col-xs-4" id="eventGallery">
+            <div class="galleryCell">
+                <div class="nailthumb-container galleryPic">
+                    <img src="~/Images/Event/@eventPhoto" alt="@eventPhoto"/>
+                </div>
+                <div class="text-center">
+                    <div class="btn btn-info text-center">View Event Gallery</div>
+                </div>
+            </div>
+                </div>
+        </a>
+
+        <a href="@Url.Action("NatureGallery", "Home")">
+
+            <div class="col-xs-4" id="natureGallery">
+            <div class="galleryCell">
+                <div class="nailthumb-container galleryPic">
+                    <img src="~/Images/Nature/@naturePhoto" alt="@naturePhoto"/>
+                </div>
+                <div class="text-center">
+                    <div class="btn btn-info text-center">
+                        View Nature Gallery
+                    </div>
+                </div>
+            </div>
+                </div>
+        </a>
+
+    </div>
 </div>

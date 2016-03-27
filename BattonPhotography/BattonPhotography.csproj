@@ -42,18 +42,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageResizer.4.0.5\lib\net45\ImageResizer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ImageResizer.Plugins.DiskCache, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageResizer.Plugins.DiskCache.4.0.5\lib\net45\ImageResizer.Plugins.DiskCache.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ImageResizer.Plugins.PrettyGifs, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageResizer.Plugins.PrettyGifs.4.0.5\lib\net45\ImageResizer.Plugins.PrettyGifs.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -140,18 +128,44 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Event\EventImage1.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage10.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage9.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage8.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage7.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage6.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage5.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage4.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage3.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage2.jpg" />
-    <Content Include="Images\Nature\FullSize\NatureImage1.jpg" />
-    <Content Include="Images\Wedding\WeddingImage1.jpg" />
+    <Content Include="Images\Event\band.jpg" />
+    <Content Include="Images\Event\band2.jpg" />
+    <Content Include="Images\Event\band3.jpg" />
+    <Content Include="Images\Event\birthday.jpg" />
+    <Content Include="Images\Event\carshow.jpg" />
+    <Content Include="Images\Event\carshow2.jpg" />
+    <Content Include="Images\Event\carshow3.jpg" />
+    <Content Include="Images\Event\facepaint.jpg" />
+    <Content Include="Images\Event\Regatta.jpg" />
+    <Content Include="Images\Event\skishow.jpg" />
+    <Content Include="Images\Event\smokeonthewater.jpg" />
+    <Content Include="Images\Event\smokeonthewater2.jpg" />
+    <Content Include="Images\Nature\2eaglesintree.jpg" />
+    <Content Include="Images\Nature\Babyowl.jpg" />
+    <Content Include="Images\Nature\babyowl2-Edit.jpg" />
+    <Content Include="Images\Nature\bird.jpg" />
+    <Content Include="Images\Nature\bird2.jpg" />
+    <Content Include="Images\Nature\bisonyellowstone.jpg" />
+    <Content Include="Images\Nature\blueheron.jpg" />
+    <Content Include="Images\Nature\boktower.jpg" />
+    <Content Include="Images\Nature\eagle.jpg" />
+    <Content Include="Images\Nature\eagleyellowstone.jpg" />
+    <Content Include="Images\Nature\egret.jpg" />
+    <Content Include="Images\Nature\elkyellowstone.jpg" />
+    <Content Include="Images\Nature\gator.jpg" />
+    <Content Include="Images\Nature\heron.jpg" />
+    <Content Include="Images\Nature\herononnest.jpg" />
+    <Content Include="Images\Nature\killdeer.jpg" />
+    <Content Include="Images\Nature\moon.jpg" />
+    <Content Include="Images\Nature\owl.jpg" />
+    <Content Include="Images\Nature\owl2.jpg" />
+    <Content Include="Images\Nature\sorarail.jpg" />
+    <Content Include="Images\Nature\wilsonsnipe.jpg" />
+    <Content Include="Images\Nature\windmill.jpg" />
+    <Content Include="Images\Nature\Wolf.jpg" />
+    <Content Include="Images\Nature\Yellowstonewaterfall.jpg" />
+    <Content Include="Images\Wedding\Alicia&amp;craig.jpg" />
+    <Content Include="Images\Wedding\Alicia&amp;craig2.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\arvixe ftp.pubxml" />
@@ -194,7 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Nature\Thumbnails\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

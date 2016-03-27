@@ -1,8 +1,51 @@
-﻿
-@{
-    ViewBag.Title = "EventGallery";
+﻿@{
+    ViewBag.Title = "Event Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
 }
 
-<h2>EventGallery</h2>
 
+<div class="container">
+    <div class="row">
+        @{
+            foreach (var fullPath in ViewBag.Photos)
+            {
+
+                var fileName = Path.GetFileName(fullPath);
+                var id = Path.GetFileNameWithoutExtension(fullPath);
+                var target = "#" + @id;
+
+                <div class="col-xs-2 thumbCell">
+                    <div class="nailthumb-container squareImage">
+                        <a href="#" data-toggle="modal" data-target="@target">
+                            <img class="nailthumb-image" src="~/Images/Event/@fileName" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="@id" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove text-danger"></span></span></button>
+                                <div class="text-center">
+                                    <h4 class="modal-title" id="myModalLabel">@id</h4>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <img id="current" src="~/Images/Event/@fileName" class="img-responsive" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <a href="~/Images/Event/@fileName" target="_blank" title="Open full size">
+                                    <div type="button" class="btn btn-success"><span class="glyphicon glyphicon-new-window"></span></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                count++;
+            }
+        }
+    </div>
+</div>
