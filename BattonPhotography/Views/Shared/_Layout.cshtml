@@ -13,15 +13,15 @@
     <style>
         .modal-dialog {
             align-content: center;
-            width: 90%;
-            height: 90%;
             padding: 50% 50% 50% 50%;
             padding: 0;
+            max-height: 60%;
+            max-width: 60%;
         }
 
         .modal-content {
             height: auto;
-            min-height: 100%;
+            min-height: 80%;
             -ms-border-radius: 0;
             border-radius: 0;
         }
@@ -55,16 +55,12 @@
                 overflow: hidden;
             }
 
-        .squareImage {
-            height: 150px;
-            width: 150px;
-        }
-        .thumbCell {
-            height: 150px;
-            width: 150px;
-            margin-left: 10px;
-            margin-top: 10px;
-        }
+            .footer {
+                background-color: #99999a;
+                -ms-opacity: 0.9;
+                opacity: 0.9;
+            }
+
     </style>
 </head>
 
@@ -78,7 +74,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Batton Photograpy", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -93,20 +88,26 @@
 <div class="container body-content">
     @RenderBody()
     <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Batton Photography</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div style="width: 144px; height: auto;">
+                        <a href="https://www.facebook.com/Wbatton-Photography-619273441562855/">
+                            <img src="~/Images/FB-FindUsonFacebook-online-144.png" class="img-responsive" alt="FindUsOnFacebook"/></a>
+                        </div>
+                </div>
+                <div class="col-xs-4"></div>
+            <div class="col-xs-4" style="text-align: right;">
+                <p>&copy; @DateTime.Now.Year - Batton Photography</p>
+            </div>
+        </div>
+        </div>
     </footer>
 </div>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
-<script>
-    $(document).ready(function() {
-        $(".nailthumb-container").nailthumb({
-            mode: "resize"
-        });
-    })
-</script>
 </body>
 </html>

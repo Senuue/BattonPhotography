@@ -7,67 +7,83 @@
 
 <style>
     .galleryPic {
-        width: 300px;
-        height: 300px;
+    width: 300px; 
+    height: 300px; 
+    -moz-min-width: 300px; 
+    -ms-min-width: 300px; 
+    -o-min-width: 300px; 
+    -webkit-min-width: 300px; 
+    min-width: 300px; 
+    -ms-background-size: auto 100%; 
+    background-size: auto 100%; 
+    background-repeat: no-repeat; 
+    background-position: center;
+        text-align: center;
+        display: table-cell;
+        vertical-align: bottom;
     }
 
-    .galleryCell {
-        width: 300px;
+    .galleryPic .btn {
+        -ms-opacity: 0.7;
+        opacity: 0.7;
     }
+
+    .galCol {
+        text-align: center;
+         -moz-min-width: 300px;
+          -ms-min-width: 300px; 
+          -o-min-width: 300px; 
+          -webkit-min-width: 300px; 
+          min-width: 300px;
+        margin-bottom: 1%;
+        overflow: hidden;
+    }
+
+
 </style>
 <br/>
 <div class="container">
 
-    <div class="jumbotron" style="background-color: #60baba">
-        <h1 style="font-family: Alex Brush;">Batton Photograpy</h1>
-        <p class="lead">Batton Photograpy is based in Winter Haven, FL. We are available for weddings, parties, and any other event. Contact us for quote. Nature prints are available for purchase.</p>
-        <p><a href="mailto:wbatton@wbattonphotography.com">wbatton@wbattonphotography.com</a></p>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="jumbotron" style="background-color:  #99999a">
+                <h1 style="font-family: Alex Brush;">Batton Photograpy</h1>
+                <p class="lead">I love seeing the world through my lens, and show others what I see. My passion for photography is growing day by day. I love capturing special moments at weddings so my clients can relive them forever. Photographing this beautiful world is my passion. I strive in learning new techniques daily, and honing my current arsenal of skills. So please, sit back and enjoy my photos.</p>
+                <p>Photos from my Nature Gallery are available to order as Canvas Prints.</p>
+                <p><a href="mailto:wbatton@wbattonphotography.com">wbatton@wbattonphotography.com</a>
+                </p>
+            </div>
+            </div>
     </div>
 
     <div class="row">
 
-        <a href="@Url.Action("WeddingGallery", "Home")">
-            <div class="col-xs-4" id="weddingGallery">
-                <div class="galleryCell">
-                    <div class="nailthumb-container galleryPic">
-                        <img src="~/Images/Wedding/@weddingPhoto" alt="@weddingPhoto" />
-                    </div>
-                    <div class="text-center">
-                        <div class="btn btn-info text-center">View Wedding Gallery</div>
-                    </div>
+        <div class="col-xs-4 galCol" id="weddingGallery">
+            <a href="@Url.Action("WeddingGallery", "Home")">
+                <div class="nailthumb-container galleryPic" style="background-image: url(/Images/Wedding/OneSize/@weddingPhoto)">
+                    <div class="btn btn-primary">Wedding Gallery</div>
                 </div>
-            </div>
-        </a>
+                
+            </a>
+        </div>
 
-        <a href="@Url.Action("EventGallery", "Home")">
 
-            <div class="col-xs-4" id="eventGallery">
-            <div class="galleryCell">
-                <div class="nailthumb-container galleryPic">
-                    <img src="~/Images/Event/@eventPhoto" alt="@eventPhoto"/>
+        <div class="col-xs-4 galCol" id="eventGallery">
+            <a href="@Url.Action("EventGallery", "Home")">
+                <div class="nailthumb-container galleryPic" style="background-image: url(/Images/Event/OneSize/@eventPhoto)">
+                    <div class="btn btn-primary">Event Gallery</div>
                 </div>
-                <div class="text-center">
-                    <div class="btn btn-info text-center">View Event Gallery</div>
-                </div>
-            </div>
-                </div>
-        </a>
+            </a>
+        </div>
 
-        <a href="@Url.Action("NatureGallery", "Home")">
 
-            <div class="col-xs-4" id="natureGallery">
-            <div class="galleryCell">
-                <div class="nailthumb-container galleryPic">
-                    <img src="~/Images/Nature/@naturePhoto" alt="@naturePhoto"/>
+        <div class="col-xs-4 galCol" id="natureGallery">
+            <a href="@Url.Action("NatureGallery", "Home")">
+                <div class="nailthumb-container galleryPic" style="background-image: url(/Images/Nature/OneSize/@naturePhoto)">
+                    <div class="btn btn-primary">Nature Gallery</div>
                 </div>
-                <div class="text-center">
-                    <div class="btn btn-info text-center">
-                        View Nature Gallery
-                    </div>
-                </div>
-            </div>
-                </div>
-        </a>
+            </a>
+        </div>
 
     </div>
 </div>

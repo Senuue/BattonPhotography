@@ -1,67 +1,165 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Nature Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int count = 0;
+    int nextPage = ViewBag.CurrentPage + 1;
 }
 
+<style>
+    .galClick {
+        margin-bottom: 1%;
+        overflow: hidden;
+        text-align: center;
+        -moz-min-width: 150px;
+        -ms-min-width: 150px;
+        -o-min-width: 150px;
+        -webkit-min-width: 150px;
+        min-width: 150px;
+    }
 
-<div class="container">
-    <br/>
-    <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-            <div class="well">
-                <p>Prints are available starting at $15.00 plus shipping, either on canvas or Designer Collection Frame. <br/>
-                    <strong>Available sizes:</strong> 5x7 8x10 10x20 11x14 12x12 12x36 16x20 <br/>
-                    Please contact me for quotes on prints. <br/>
-                    <a href="mailto:wbatton@wbattonphotography.com">wbatton@wbattonphotography.com</a>
-                </p>
+    .imgDiv {
+        width: 150px;
+        height: 150px;
+        -moz-min-width: 150px;
+        -ms-min-width: 150px;
+        -o-min-width: 150px;
+        -webkit-min-width: 150px;
+        min-width: 150px;
+        -ms-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+                text-align: right;
+        display: table-cell;
+        vertical-align: bottom;
+    }
+
+    .imgDiv .btn {
+        -ms-opacity: 0.7;
+        opacity: 0.7;
+    }
+    body {
+        background-image: url('/Images/Nature/OneSize/DSC_0241.jpg') !important;
+        -ms-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .modal-footer .img-responsive {
+        margin: 0 auto;
+    }
+</style>
+
+<input type="hidden" id="nextLink" value="@ViewBag.NextPageUrl" />
+<input type="hidden" id="previousLink" value="@ViewBag.PreviousUrl" />
+
+<div class="container" id="natureGallleryContainer">
+    <br />
+    <div class="panel panel-default text-center" style="background-color: #383839; color: white;">
+
+        <div class="panel-heading" style="background-color: #99999a">
+            <h2 class="panel-title" style="font-family: Alex Brush; font-size: xx-large !important; color: white">Nature Gallery</h2>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                @{
+                    foreach (var fullPath in ViewBag.Photos)
+                    {
+                        if (count % 4 == 0)
+                        {
+                            @:</div>
+                        @:<div class="row">
+                        }
+
+                        var fileName = Path.GetFileName(fullPath);
+                        var id = Path.GetFileNameWithoutExtension(fullPath);
+                        var target = "#" + @id;
+
+                        <div class="col-xs-3 galClick" data-img="/Images/Nature/OneSize/@fileName" data-name="@fileName">
+                            <a href="#" data-img="/Images/Nature/OneSize/@fileName" data-name="@fileName">
+                                <div id="@fileName" style="background-image: url(/Images/Nature/thumbnails/@fileName);" class="imgDiv" oncontextmenu="return false;" data-img="/Images/Nature/OneSize/@fileName" data-name="@fileName">
+                                    <div class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-shopping-cart"></span></div>
+                                </div>
+                            </a>
+                        </div>
+                        count++;
+                    }
+
+}
+            </div>
+
+        </div>
+        <div class="panel-footer" style="background-color: #99999a">
+            <div class="row">
+
+                <nav>
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" id="previousButton" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        @{
+                            var pageCount = 0;
+
+                            while (pageCount < ViewBag.PageCount)
+                            {
+                                <li><a href="@Url.Action("NatureGallery", "Home", new{pageNumber = pageCount})" class="pageLink" id="@pageCount">@Html.Raw(pageCount + 1)</a></li>
+                                pageCount++;
+                            }
+                        }
+                        <li>
+                            <a href="#" id="nextButton" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+
             </div>
         </div>
-        <div class="col-xs-1"></div>
-    </div>
-
-    <div class="row">
-        @{
-            foreach (var fullPath in ViewBag.Photos)
-            {
-
-                var fileName = Path.GetFileName(fullPath);
-                var id = Path.GetFileNameWithoutExtension(fullPath);
-                var target = "#" + @id;
-
-                <div class="col-xs-2 thumbCell">
-                    <div class="nailthumb-container squareImage">
-                        <a href="#" data-toggle="modal" data-target="@target">
-                            <img class="nailthumb-image" src="~/Images/Nature/@fileName"/>
-                        </a>
-                    </div>
-                </div>
-
-                    <div class="modal fade" id="@id" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove text-danger"></span></span></button>
-                                <div class="text-center">
-                                    <h4 class="modal-title" id="myModalLabel">@id</h4>
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <img id="current" src="~/Images/Nature/@fileName" class="img-responsive"/>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <a href="~/Images/Nature/@fileName" target="_blank" title="Open full size">
-                                    <div type="button" class="btn btn-success"><span class="glyphicon glyphicon-new-window"></span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                count++;
-            }
-        }
     </div>
 </div>
+
+<div class="modal fade" id="galModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="word-wrap: break-word;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img class="img-responsive" src="#" id="natureImage" oncontextmenu="return false; " />
+            </div>
+
+            <div class="modal-footer text-center" style="text-align: center !important">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="VG3HXKJ7UWX5S">
+                    <strong>
+                        Canvas prints are available for order below. These are gallery wrapped canvas without a frame. If you would like other print sizes not listed, please contact me for a quote.
+                        <br />
+                        <a href="mailto:wbatton@wbattonphotography.com">wbatton@wbattonphotography.com</a>
+                    </strong>
+                    <br />
+                    <select name="os0">
+                        <option value="5x7">5x7 $28.00 USD</option>
+                        <option value="8x10">8x10 $34.00 USD</option>
+                        <option value="10x20">10x20 $57.00 USD</option>
+                    </select>
+                    <br />
+                    <input type="hidden" name="currency_code" value="USD" />
+                    <input type="hidden" name="item_name" value="cookie" id="itemName">
+
+                    <input type="image" class="img-responsive" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/natureGallery");
+
+}

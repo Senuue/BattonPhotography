@@ -1,101 +1,121 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BattonPhotography.Controllers
 {
     public class HomeController : Controller
     {
-        private static Random rnd = new Random((int)DateTime.Now.Ticks);
+        private static readonly Random Rnd = new Random((int) DateTime.Now.Ticks);
 
         public ActionResult Index()
         {
-            List<string> weddingPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Wedding")).ToList();
-            ViewBag.Wedding = Path.GetFileName(weddingPhotos[rnd.Next(weddingPhotos.Count)]);
+            var weddingPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Wedding/Fullsize")).ToList();
+            ViewBag.Wedding = Path.GetFileName(weddingPhotos[Rnd.Next(weddingPhotos.Count)]);
 
-            List<string> eventPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Event")).ToList();
-            ViewBag.Event = Path.GetFileName(eventPhotos[rnd.Next(eventPhotos.Count)]);
+            var eventPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Event/Fullsize")).ToList();
+            ViewBag.Event = Path.GetFileName(eventPhotos[Rnd.Next(eventPhotos.Count)]);
 
-            List<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature")).ToList();
-            ViewBag.Nature = Path.GetFileName(naturePhotos[rnd.Next(naturePhotos.Count)]);
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            var naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature/Fullsize")).ToList();
+            ViewBag.Nature = Path.GetFileName(naturePhotos[Rnd.Next(naturePhotos.Count)]);
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult WeddingGallery(int? pageNumber)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult WeddingGallery()
-        {
-            IEnumerable<string> weddingPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/wedding"));
-
-            List<string> weddingPhotosList = new List<string>();
-
-            foreach (var photo in weddingPhotos)
+            if (pageNumber == null)
             {
-                weddingPhotosList.Add(photo);
+                pageNumber = 0;
             }
 
-            ViewBag.Photos = weddingPhotosList;
-            ViewBag.PhotoCount = weddingPhotosList.Count();
+            var naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Wedding/FullSize")).ToList();
+
+            ViewBag.PageCount = (naturePhotos.Count + 16 - 1)/16;
+
+            var pagedResults = naturePhotos
+                .Skip(16*pageNumber.Value)
+                .Take(16);
+
+            ViewBag.Photos = pagedResults;
+
+            ViewBag.CurrentPage = pageNumber.Value;
+
+            ViewBag.NextPageUrl = GetNextUrl(ViewBag.PageCount, pageNumber.Value, "WeddingGallery");
+            ViewBag.PreviousUrl = GetPreviousUrl(ViewBag.PageCount, pageNumber.Value, "WeddingGallery");
 
             return View();
         }
 
-        public ActionResult NatureGallery()
+        public ActionResult NatureGallery(int? pageNumber)
         {
-            IEnumerable<string> naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature"));
-
-            List<string> naturePhotosList = new List<string>();
-
-            foreach (var photo in naturePhotos)
+            if (pageNumber == null)
             {
-                naturePhotosList.Add(photo);
+                pageNumber = 0;
             }
 
-            ViewBag.Photos = naturePhotosList;
-            ViewBag.PhotoCount = naturePhotosList.Count();
+            var naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Nature/FullSize")).ToList();
+
+            ViewBag.PageCount = (naturePhotos.Count + 16 - 1)/16;
+
+            var pagedResults = naturePhotos
+                .Skip(16*pageNumber.Value)
+                .Take(16);
+
+            ViewBag.Photos = pagedResults;
+
+            ViewBag.CurrentPage = pageNumber.Value;
+
+            ViewBag.NextPageUrl = GetNextUrl(ViewBag.PageCount, pageNumber.Value, "NatureGallery");
+            ViewBag.PreviousUrl = GetPreviousUrl(ViewBag.PageCount, pageNumber.Value, "NatureGallery");
 
             return View();
         }
 
-        public ActionResult EventGallery()
+        public ActionResult EventGallery(int? pageNumber)
         {
-            IEnumerable<string> eventPhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/event"));
-
-            List<string> eventPhotosList = new List<string>();
-
-            foreach (var photo in eventPhotos)
+            if (pageNumber == null)
             {
-                eventPhotosList.Add(photo);
+                pageNumber = 0;
             }
 
-            ViewBag.Photos = eventPhotosList;
-            ViewBag.PhotoCount = eventPhotosList.Count();
+            var naturePhotos = Directory.EnumerateFiles(Server.MapPath("~/Images/Event/FullSize")).ToList();
+
+            ViewBag.PageCount = (naturePhotos.Count + 16 - 1)/16;
+
+            var pagedResults = naturePhotos
+                .Skip(16*pageNumber.Value)
+                .Take(16);
+
+            ViewBag.Photos = pagedResults;
+
+            ViewBag.CurrentPage = pageNumber.Value;
+
+            ViewBag.NextPageUrl = GetNextUrl(ViewBag.PageCount, pageNumber.Value, "EventGallery");
+            ViewBag.PreviousUrl = GetPreviousUrl(ViewBag.PageCount, pageNumber.Value, "EventGallery");
 
             return View();
         }
 
-        public ActionResult RequestPrint(string gallery, string file)
+        private string GetPreviousUrl(int pageCount, int currentPage, string pageName)
         {
-            ViewBag.Gallery = gallery;
-            ViewBag.FileName = file;
+            if (currentPage == 0)
+            {
+                return Url.Action(pageName, "Home", new {pageNumber = pageCount - 1});
+            }
 
-            return View();
+            return Url.Action(pageName, "Home", new {pageNumber = currentPage - 1});
+        }
+
+        public string GetNextUrl(int pageCount, int currentPage, string pageName)
+        {
+            if ((currentPage + 1) == pageCount)
+            {
+                return Url.Action(pageName, "Home", new {pageNumber = 0});
+            }
+
+            return Url.Action(pageName, "Home", new {pageNumber = currentPage + 1});
         }
     }
 }
