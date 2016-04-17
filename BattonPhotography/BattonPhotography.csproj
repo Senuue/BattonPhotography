@@ -510,9 +510,6 @@
     <Content Include="Images\Wedding\Thumbnails\DSC_3168.JPG" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\arvixe ftp.pubxml" />
-    <None Include="Properties\PublishProfiles\Arvixe WBP.pubxml" />
-    <None Include="Properties\PublishProfiles\Arvixe.pubxml" />
     <None Include="Properties\PublishProfiles\wbattonphotography.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\eventGallery.js" />
